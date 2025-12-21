@@ -6,7 +6,7 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 15:19:11 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/20 18:12:02 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/21 15:20:46 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main(int argc, char **argv)
 {
 	t_game game;
-	int	i;
+	// int	i;
 	
 	if (argc != 2)
 	{
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		return (1);	
 	}
 	game.map = read_map(argv[1]);
-	if (!game.map)
+	/*if (!game.map)
 	{
 		ft_printf("failed to read map\n");
 		return (1);	
@@ -71,11 +71,24 @@ int main(int argc, char **argv)
 	{
     	ft_printf("some collectibles or exit are unreachable (-_-)\n");
     	return (1);
+	}*/
+
+	if (!is_rec(game.map) || !wall_check(game.map) || !check_exit(game.map)
+    || !check_player(game.map) || !check_coll(game.map) || !check_path(game.map))
+	{
+    	ft_printf("Invalid map!\n");
+    	return (1);
 	}
-
+	game.moves = 0;
+	game.on_exit = 0;
+	game.width = ft_strlen(game.map[0]);
+	game.height = map_height(game.map);
+	game.collectibles = count_collectibles(game.map);
+	find_player_in_game(&game);
 	game.mlx = mlx_init();
-	game.win = mlx_new_window(game.mlx, 400, 400, "so_long");
-
+	game.win = mlx_new_window(game.mlx, ft_strlen(game.map[0]) *TILE, map_height(game.map) *TILE, "so_long");
+	load_images(&game);
+	draw_map(&game);
 	mlx_hook(game.win, 17, 0, close_window, &game);
 	mlx_hook(game.win, 2, 1L<<0, key_pressed, &game);
 	mlx_loop(game.mlx);

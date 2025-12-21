@@ -6,7 +6,7 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:08:32 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/20 15:39:06 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/21 12:25:13 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ char	**read_map(char *filename)
 		return (NULL);
 	return (fill_map(filename, map));
 }
+int map_height(char **map)
+{
+    int i = 0;
+    while (map[i])
+        i++;
+    return i;
+}
+
 
 
 
