@@ -6,7 +6,7 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 16:03:10 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/20 18:20:02 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/25 18:16:42 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ char	**copy_map(char **map)
 	cpy = malloc(sizeof(char *) * (i + 1));
 	if (!cpy)
 		return (NULL);
-	i = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
 		cpy[i] = ft_strdup(map[i]);
-		i++;
+		if (!cpy[i])
+		{
+			free_partial(cpy, i);
+			return (NULL);
+		}
 	}
 	cpy[i] = NULL;
 	return (cpy);

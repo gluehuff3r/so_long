@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_stuff.c                                      :+:      :+:    :+:   */
+/*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:43:10 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/20 15:55:05 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/25 18:14:05 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_player(char **map)
+int	check_player(char **map)
 {
-	int i;
-	int j;
-	int count;
-	
+	int	i;
+	int	j;
+	int	count;
+
 	i = 0;
 	count = 0;
 	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
 				count++;
@@ -33,12 +33,13 @@ int check_player(char **map)
 	}
 	return (count == 1);
 }
-int check_exit(char **map)
+
+int	check_exit(char **map)
 {
-	int i;
-	int j;
-	int count;
-	
+	int	i;
+	int	j;
+	int	count;
+
 	i = 0;
 	count = 0;
 	while (map[i])
@@ -55,11 +56,11 @@ int check_exit(char **map)
 	return (count == 1);
 }
 
-int check_coll(char **map)
+int	check_coll(char **map)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -77,11 +78,11 @@ int check_coll(char **map)
 	return (count >= 1);
 }
 
-int count_collectibles(char **map)
+int	count_collectibles(char **map)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
 	count = 0;

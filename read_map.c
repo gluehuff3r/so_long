@@ -6,12 +6,11 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 14:08:32 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/21 12:25:13 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/25 18:22:02 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	count_lines(char *filename)
 {
@@ -23,8 +22,11 @@ int	count_lines(char *filename)
 	if (fd < 0)
 		return (-1);
 	lines = 0;
-	while ((line = get_next_line(fd)))
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		free(line);
 		lines++;
 	}
@@ -40,10 +42,16 @@ static char	**fill_map(char *filename, char **map)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
-	i = 0;
-	while ((line = get_next_line(fd)))
 	{
+		free(map);
+		return (NULL);
+	}
+	i = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
 		if (line[ft_strlen(line) - 1] == '\n')
 			line[ft_strlen(line) - 1] = '\0';
 		map[i++] = line;
@@ -66,16 +74,13 @@ char	**read_map(char *filename)
 		return (NULL);
 	return (fill_map(filename, map));
 }
-int map_height(char **map)
+
+int	map_height(char **map)
 {
-    int i = 0;
-    while (map[i])
-        i++;
-    return i;
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
-
-
-
-
-
-

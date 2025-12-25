@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	load_images (t_game *g)
+void	load_images(t_game *g)
 {
 	int	w;
 	int	h;
@@ -23,5 +23,3 @@ void	load_images (t_game *g)
 	g->exit = mlx_xpm_file_to_image(g->mlx, "textures/E.xpm", &w, &h);
 	g->collect = mlx_xpm_file_to_image(g->mlx, "textures/C.xpm", &w, &h);
 }
-
-
