@@ -6,7 +6,7 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 15:19:11 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/25 18:23:53 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/26 18:57:32 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,16 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc != 2)
-		return (ft_printf("Error\nUsage: ./so_long <map.ber>\n"), 1);
+	{
+		ft_printf("Error\nUsage: ./so_long <map.ber>\n");	
+		return (1);
+	}
 	game.map = read_map(argv[1]);
 	if (!game.map)
-		return (ft_printf("Error\nFailed to read map!\n"), 1);
+	{
+		ft_printf("Error\nFailed to read map!\n");
+		return (1);
+	}
 	if (!validate_map(game.map))
 	{
 		ft_printf("Error\nInvalid map!\n");

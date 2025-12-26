@@ -6,7 +6,7 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/20 15:43:10 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/25 18:14:05 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/26 18:30:02 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	check_player(char **map)
 		}
 		i++;
 	}
-	return (count == 1);
+	if(count != 1)
+		return (0);
+	return (1);
 }
 
 int	check_exit(char **map)
@@ -53,7 +55,9 @@ int	check_exit(char **map)
 		}
 		i++;
 	}
-	return (count == 1);
+	if(count != 1)
+		return (0);
+	return (1);
 }
 
 int	check_coll(char **map)
@@ -75,7 +79,9 @@ int	check_coll(char **map)
 		}
 		i++;
 	}
-	return (count >= 1);
+		if(count < 1)
+		return (0);
+	return (1);
 }
 
 int	count_collectibles(char **map)

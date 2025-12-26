@@ -6,14 +6,14 @@
 /*   By: haabu-sa <haabu-sa@amman.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/06 15:19:25 by haabu-sa          #+#    #+#             */
-/*   Updated: 2025/12/25 18:16:01 by haabu-sa         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:58:03 by haabu-sa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define TILE 64
-# include "/home/haabu-sa/file2/libft2.0/libft2.0/libft.h"
+# include "libft.h"
 # include "mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
